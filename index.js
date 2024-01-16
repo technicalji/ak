@@ -20,14 +20,16 @@ app.use(express.json());
 app.use("/public",express.static("public"));
 const addUserRoute = require("./routes/users");
 const addProjectRoute = require("./routes/project");
+const sendEmailRoute = require("./routes/emailSender");
+
+app.use(addUserRoute);
+app.use(addProjectRoute);
+app.use(sendEmailRoute);
 
 app.use(express.static(path.join(__dirname,"./client/build")));
 app.get('*',function(req,res){
     res.sendFile(path.join(__dirname,'./client/build/index.html'));
 })
-
-app.use(addUserRoute);
-app.use(addProjectRoute);
 
 app.listen(process.env.PORT,()=>{
     console.log(`Server started on port ${process.env.PORT}`)

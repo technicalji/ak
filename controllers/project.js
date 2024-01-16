@@ -33,11 +33,12 @@ const saveProject = async (req, res) => {
         )
     }
 };
+
 const getPrject = async (req, res) => {
     const data = await Project.find();
     return(res.status(200).json({
         message: "All project Details",
         data
     }))
-}
+};
 module.exports = {saveProject,getPrject};

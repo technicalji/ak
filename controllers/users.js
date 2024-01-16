@@ -28,5 +28,20 @@ const saveUser = async (req, res) => {
         )
     }
 };
-
-module.exports = {saveUser};
+const getUsers = async (req, res) => {
+    try {
+        const data = await User.find();
+        return(
+            res.status(200).json({
+                data
+            })
+        )
+    } catch (error) {
+        return(
+            res.status(200).json({
+                message:"something went wrong"
+            })
+        )
+    }
+}
+module.exports = {saveUser, getUsers};
